@@ -13294,7 +13294,8 @@ Make sure to keep track of the various features and conditions you tried before 
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer</strong>: <em>83.16%</em></p>
+<p><strong>Answer</strong>: 
+<em>To reach 80%, I tried to give more specification to 'female' since there are lots of them didn't survive while we marked them as survived in the previous step. To give more specification, I took a look at their 'age', 'pclass' and 'fare', since they are more informative than other. For example, when 'Pclass != 3', most of female are survived; all female when greater than 60 age are survived; 'fare' separate some small part of surviver. Make these features into a decision tree can help more get better accuracy. I tested their separatability, it turns out I can use 'fare', 'age' to specially diffrentiate a few female who are not survived. (Check out code above). Finally, the accuracy is 83.16%.</em></p>
 
 </div>
 </div>
@@ -13314,7 +13315,7 @@ Make sure to keep track of the various features and conditions you tried before 
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer</strong>: <em>Interview Candidates. The outcome variable will be whether give him a job offer or not. Features about data could be exclusive and limited category. For example exclusive meaning data can separate one part of data from the other. Limited category meaning that data cannot be unique for each information set. Just like we cannot use ID to make decision in decision tree.</em></p>
+<p><strong>Answer</strong>: <em>Interview Candidates. The outcome variable will be whether give him a job offer or not. Features about data could be exclusive and limited category. For example exclusive meaning data can separate one part of data from the other. Limited category meaning that data cannot be unique for each information set. Just like we cannot use ID to make decision in decision tree. To name a few, if a company wants to make its employee more diversity, it can use 'gender' or 'ethnic' when choose candidates. More specifically, they can hire someone who is a female or who is an African American. If a company want a employee who had C++ experience, they can use variable like 'experience' or 'skill' to differentiate the candidates.</em></p>
 
 </div>
 </div>
