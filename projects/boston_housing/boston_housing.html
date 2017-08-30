@@ -12192,8 +12192,9 @@ We have R^2 as 0.923. It did a decent job on predict variable. It is not perfect
 <p><strong>Answer: </strong><br>
 A proper split ratio for training and testing subsets is very useful in a few different ways.</p>
 <ol>
-<li>Prevent underfitting: If testing data is way more than training data set, the model created by training set might be underfitted.  </li>
-<li>Prevent overfitting: If we use entire data set to train our model, our model may memorize the whole dataset instead of learning its characteristics, which is a overfit situation. This is no good when we encounter some new data.  </li>
+<li>Gives estimate of performance on an independent dataset: this will give us a straight forward feed back of how good is our model. </li>
+<li>Serve as check on overfitting: If we use entire data set to train our model, our model may memorize the whole dataset instead of learning its characteristics, which is a overfit situation. This is no good when we encounter some new data.  </li>
+<li>Some other machine learning method require dataset to split in this way. (e.g. CART decision tree)</li>
 </ol>
 <p>In conclusion, it is necessary for us to have a proper testing:training ratio like 2:8 (20%).</p>
 
@@ -13281,6 +13282,7 @@ Think about the pros and cons of adding more training points based on if the tra
 <p><strong>Answer: </strong><br>
 max_depth = 1<br>
 This is a underfitting model. It works when there are only 20 datasets, however, since it oversimplify the problem, it doesn't do good when training dataset grows. For testing dataset it only did about 50%, which is the place both curve converges. In conclusion, it is not a good model.</p>
+<p>As we can tell, the graph converges, thus, more data will not help it to learn better, it will converge to a point anyway. We will still get everything I stated above even with more data.</p>
 <p>Overall, it is hard to say which one is better between max_depth = 3 &amp; 6. Both did a decent job on describing training dataset. Max_6 is slightly bette. However, training &amp; testing dataset are not converge to a point, meaning its model is not working the same on training &amp; testing dataset. Max_3 is better in creating a more consistant model in this point.<br>
 If I have to pick a best model, I will pick Max_3.</p>
 <p>max_depth = 10 is a overfitting model clearly. It almost cover all training dataset, but testing dataset is doesn't perform as good as training dataset.</p>
@@ -13808,8 +13810,9 @@ Based on Occams Razor's saying we should pick max_3 over max_6, since max_3 is a
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong><br>
-Grid search is a technique we used in cross validation. It gives us a visual grid to justify which training model is the best when there are multiply features used in our training models.<br>
-For example, SVM has different kernel and gamma value when constructing. Then draw a grid with different gamma &amp; kernal combination and pick the one with highest 'F-beta score', we can find the best training model we get.<br>
+Grid search is a technique we used to find best feasiable model when hyper-parameters cannot be optimized or selected directly. It runs a exhausitive search on all combination of hyper-parameters and gives us a visual grid to justify which training model is the best when there are multiply hyper-parameters are used in our training models.<br>
+For example, SVM has different kernel and gamma value when constructing. Then draw a grid with different gamma &amp; kernal combination and pick the one with highest 'F-beta score', we can find the best training model we get. 
+<em>Note: F-beta score is not the only standard we used in Grid Search. We can use any standard we feel accurate enough in this process.</em>
 As above, grid search help us to find the dominant model among all.</p>
 
 </div>
@@ -13836,7 +13839,8 @@ As above, grid search help us to find the dominant model among all.</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong><br>
-K-Fold cross-validation is a training technique to fully utilize dataset without 'cheating'(use testing dataset before the very end).<br>
+K-Fold cross-validation is a training technique to fully utilize dataset without 'cheating' (by Cheating I mean: use testing dataset before the very end). But we don't cheat. We use training data to train, testing data to test.<br>
+<em>New: Maybe I wasn't clear enough before. We separate data into K parts then for each part we use it as testing set and the rest as training set. And we will get K models with different parameters so that we can calculate their average. We don't use testing data in training model for sure.</em><br>
 'K' meaning partition dataset into K equal-sized subsets, usually randomly partitioning is better to eliminate bias. Then use each subsets as testing data accordingly, meanwhile, use the rest K-1 subsets as training data. Finally, when other parameters are the same, the average of K different models will be the ideal model for our data.<br>
 The benefit of doing this for grid search is that sometimes some model will have better performance on specific data, when doing K-fold, we eliminate this bias and the average will be a better estimation of models used in grid search.</p>
 
