@@ -1,3 +1,7 @@
+# This is a program which find the longest palindrome in a string s
+
+
+# This helper function
 def helper(s, l, r):
 
     while l >= 0 and r < len(s) and s[l] == s[r]:
@@ -6,7 +10,8 @@ def helper(s, l, r):
 
 
 
-def longestPalindrome(s):
+# Longest palindrome finder
+def question2(s):
 
     res = ""
     for i in xrange(len(s)):
@@ -22,16 +27,18 @@ def longestPalindrome(s):
   
 
 
+# Main function with test cases
 def main():
     
     # 5 Test Cases
     s = ['ABCCBAD', '', 'a', 'aba', 'ab123321xia']
     for i in s:
-        print i, longestPalindrome(i)
+        print i, question2(i)
     return 0
 
 
 
+# Call main function
 if __name__ == '__main__':
 
     main()

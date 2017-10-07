@@ -1,3 +1,6 @@
+# This is a program find the m'th element from tail of a linked list
+
+# Node class for linked list
 class Node(object):
 
     def __init__(self, data):
@@ -6,7 +9,7 @@ class Node(object):
         self.next = None
         
 
-
+# A function help visualization, print linked list
 def print_ll(head):
 
     while(head):
@@ -17,8 +20,10 @@ def print_ll(head):
 
 
 
+# Method 1: Store in list and access using []
 def list_method(head, m):
-    
+   
+    if not head: return -1
     num = []
     while(head):
         num.append(head.data)
@@ -26,9 +31,10 @@ def list_method(head, m):
     return num[-m] if m <= len(num) else -1
 
 
-# double_pointer
+# Double_pointer method: use a faster & slower pointer to iterate linked list
 def question5(head, m):
-
+    
+    if not head: return -1
     first = head
     second = head
     while m>0 and first:
@@ -43,8 +49,10 @@ def question5(head, m):
 
 
 
+# Main function with test case
 def main():
     
+    # Test case
     head = Node(4)
     head.next = Node(3)
     head.next.next = Node(5)
@@ -54,11 +62,24 @@ def main():
     print_ll(head)
 
     for i in range(6):
+        # Call 2 method
         print question5(head, i+1),
         print list_method(head, i+1)
 
 
+    # Test case 2
+    head = Node(4)
+    print question5(head, 1),
+    print list_method(head, 1)
+    
 
+    # Test case 3
+    head = None
+    print question5(head, 1),
+    print list_method(head, 1)
+
+
+# Call main function
 if __name__ == "__main__":
 
     main()
