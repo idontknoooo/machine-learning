@@ -3,6 +3,7 @@ import numpy as np
 import tensorflow as tf
 import random
 from unittest.mock import MagicMock
+#from mock import MagicMock
 
 
 def _print_success_message():
